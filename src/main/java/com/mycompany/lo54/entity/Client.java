@@ -7,20 +7,31 @@ package com.mycompany.lo54.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author PanJin
  */
+@Entity
 public class Client implements Serializable {
-    
+    @id
+    @GenericGenerator(name = "generator", strategy = "increment")
+    @GeneratedValue(generator = "generator")
     private Integer id;
     private String lastname;
     private String firstname;
     private String address;
     private String phone;
     private String email;
-    private Integer course_session_id;
+    private Set<Course_Session> course_session;
 
     public Client() {
     }
@@ -73,12 +84,12 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public Integer getCourse_session_id() {
+    public Set<Course_Session> getCourse_session() {
         return course_session_id;
     }
 
-    public void setCourse_session_id(Integer course_session_id) {
-        this.course_session_id = course_session_id;
+    public void setCourse_session(Set<Course_Session> course_session) {
+        this.course_session = course_session;
     }
     
     

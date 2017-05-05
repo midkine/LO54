@@ -6,14 +6,24 @@
 package com.mycompany.lo54.entity;
 
 import java.io.Serializable;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 /**
  *
  * @author PanJin
  */
+@Entity
 public class Course implements Serializable {
     
-   
+    @id
+    @GenericGenerator(name = "generator", strategy = "increment")
+    @GeneratedValue(generator = "generator")
     private String code;
     private String title;
 

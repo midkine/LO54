@@ -8,17 +8,29 @@ package com.mycompany.lo54.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  *
  * @author PanJin
  */
+@Entity
 public class Course_Session implements Serializable{
- 
+    @id
+    @GenericGenerator(name = "generator", strategy = "increment")
+    @GeneratedValue(generator = "generator")
     private Integer id;
     private Date start_date;
     private Date end_date;
-    private String course_code;
-    private Integer location_id;
+    private Course course;
+    private Location location;
 
     public Course_Session() {
     }
@@ -47,20 +59,24 @@ public class Course_Session implements Serializable{
         this.end_date = end_date;
     }
 
-    public String getCourse_code() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "code")
+    public Course getCourse() {
         return course_code;
     }
 
-    public void setCourse_code(String course_code) {
-        this.course_code = course_code;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public Integer getLocation_id() {
-        return location_id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocation_id(Integer location_id) {
-        this.location_id = location_id;
+    public void setLocation(Location location) {
+        this.location = location;
     }
     
     

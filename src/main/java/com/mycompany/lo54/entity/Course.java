@@ -14,16 +14,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 /**
  *
  * @author PanJin
  */
 @Entity
 public class Course implements Serializable {
-    
-    @id
     @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(generator = "generator")
+    @Id
     private String code;
     private String title;
 

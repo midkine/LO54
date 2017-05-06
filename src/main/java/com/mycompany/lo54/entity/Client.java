@@ -13,8 +13,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -22,16 +26,18 @@ import javax.persistence.Table;
  */
 @Entity
 public class Client implements Serializable {
-    @id
-    @GenericGenerator(name = "generator", strategy = "increment")
+    @GenericGenerator(name = "generator", strategy = "assigned")
     @GeneratedValue(generator = "generator")
+    @Id
     private Integer id;
     private String lastname;
     private String firstname;
     private String address;
     private String phone;
     private String email;
-    private Set<Course_Session> course_session;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_session_id")
+    private Course_Session course_session;
 
     public Client() {
     }
@@ -84,11 +90,11 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public Set<Course_Session> getCourse_session() {
-        return course_session_id;
+    public Course_Session getCourse_session() {
+        return course_session;
     }
 
-    public void setCourse_session(Set<Course_Session> course_session) {
+    public void setCourse_session(Course_Session course_session) {
         this.course_session = course_session;
     }
     

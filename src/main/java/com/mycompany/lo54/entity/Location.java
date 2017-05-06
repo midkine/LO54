@@ -14,15 +14,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 /**
  *
  * @author PanJin
  */
 @Entity
 public class Location implements Serializable {
-    @id
     @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(generator = "generator")
+    @Id
     private Integer id ;
     private String city ;
 

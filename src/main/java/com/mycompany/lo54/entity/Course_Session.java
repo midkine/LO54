@@ -14,8 +14,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -23,13 +26,17 @@ import javax.persistence.Table;
  */
 @Entity
 public class Course_Session implements Serializable{
-    @id
+    @Id
     @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(generator = "generator")
     private Integer id;
     private Date start_date;
     private Date end_date;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_code")
     private Course course;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id")
     private Location location;
 
     public Course_Session() {
@@ -59,18 +66,14 @@ public class Course_Session implements Serializable{
         this.end_date = end_date;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "code")
     public Course getCourse() {
-        return course_code;
+        return course;
     }
 
     public void setCourse(Course course) {
         this.course = course;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
     public Location getLocation() {
         return location;
     }

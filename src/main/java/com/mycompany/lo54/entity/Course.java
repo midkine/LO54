@@ -21,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 public class Course implements Serializable {
-    @GenericGenerator(name = "generator", strategy = "increment")
+    @GenericGenerator(name = "generator", strategy = "assigned")
     @GeneratedValue(generator = "generator")
     @Id
     private String code;

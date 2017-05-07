@@ -18,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -26,10 +28,10 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 public class Course_Session implements Serializable{
-    @Id
-    @GenericGenerator(name = "generator", strategy = "increment")
+    @GenericGenerator(name = "generator", strategy = "assigned")
     @GeneratedValue(generator = "generator")
-    private Integer id;
+    @Id
+    private Integer csid; 
     private Date start_date;
     private Date end_date;
     @OneToOne(cascade = CascadeType.ALL)
@@ -42,14 +44,15 @@ public class Course_Session implements Serializable{
     public Course_Session() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getCsid() {
+        return csid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCsid(Integer csid) {
+        this.csid = csid;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getStart_date() {
         return start_date;
     }
@@ -58,6 +61,7 @@ public class Course_Session implements Serializable{
         this.start_date = start_date;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getEnd_date() {
         return end_date;
     }

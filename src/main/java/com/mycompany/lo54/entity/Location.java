@@ -21,21 +21,21 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 public class Location implements Serializable {
-    @GenericGenerator(name = "generator", strategy = "increment")
+    @GenericGenerator(name = "generator", strategy = "assigned")
     @GeneratedValue(generator = "generator")
     @Id
-    private Integer id ;
+    private Integer lid ;
     private String city ;
 
     public Location() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getLid() {
+        return lid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLid(Integer lid) {
+        this.lid = lid;
     }
 
     public void setCity(String city) {

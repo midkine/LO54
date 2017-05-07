@@ -29,25 +29,25 @@ public class Client implements Serializable {
     @GenericGenerator(name = "generator", strategy = "assigned")
     @GeneratedValue(generator = "generator")
     @Id
-    private Integer id;
+    private Integer cid;
     private String lastname;
     private String firstname;
     private String address;
     private String phone;
     private String email;
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_session_id")
+    @JoinColumn(name = "csid")
     private Course_Session course_session;
 
     public Client() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getLastname() {

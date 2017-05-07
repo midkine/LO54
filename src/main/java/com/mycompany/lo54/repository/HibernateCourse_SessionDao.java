@@ -5,22 +5,70 @@
  */
 package com.mycompany.lo54.repository;
 
-import com.mycompany.lo54.entity.Client;
 import com.mycompany.lo54.entity.Course_Session;
 import com.mycompany.lo54.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
  *
  * @author Paul-Huang
  */
-public class HibernateClientDao {
-    public void addUser(Client c) {
+public class HibernateCourse_SessionDao {
+    public List<Course_Session> selectAllSession(){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Course_Session> list = null;
+	    try {
+	        session.beginTransaction();
+	        Query query = session.createQuery("from Course_Session");
+                list = query.list();
+                session.getTransaction().commit();
+                return list;
+		}
+		catch (HibernateException he) {
+	        he.printStackTrace();
+	        if(session.getTransaction() != null) {
+	            try {
+	                session.getTransaction().rollback();
+	            }catch(HibernateException he2) {he2.printStackTrace(); }
+	        }
+                return list;
+		}
+		finally {
+	         session.close();
+                }
+    }
+    
+    public Course_Session selectCourse(Integer csid){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Course_Session course_session = null;
+	    try {
+	        session.beginTransaction();
+	        Query query = session.createQuery("from Course_Session where csid = ?");
+                course_session = (Course_Session) session.get(Course_Session.class, csid);
+                session.getTransaction().commit();
+                return course_session;
+		}
+		catch (HibernateException he) {
+	        he.printStackTrace();
+	        if(session.getTransaction() != null) {
+	            try {
+	                session.getTransaction().rollback();
+	            }catch(HibernateException he2) {he2.printStackTrace(); }
+	        }
+                return course_session;
+		}
+		finally {
+	         session.close();
+                }
+    }
+    public void addCourse_Session(Course_Session cs) {
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
 	        session.beginTransaction();
-	        session.save(c);
+	        session.save(cs);
 	        session.getTransaction().commit();
 		}
 		catch (HibernateException he) {
@@ -36,54 +84,11 @@ public class HibernateClientDao {
                 }
     }
     
-    public Client selectUser(Integer cid) {
-	    Session session = HibernateUtil.getSessionFactory().openSession();
-            Client c = null;
-	    try {
-	        session.beginTransaction();
-	        c = (Client) session.get(Client.class,cid);
-	        session.getTransaction().commit();
-                return c;
-		}
-		catch (HibernateException he) {
-	        he.printStackTrace();
-	        if(session.getTransaction() != null) {
-	            try {
-	                session.getTransaction().rollback();
-	            }catch(HibernateException he2) {he2.printStackTrace(); }
-	        }
-                return c;
-		}
-		finally {
-	         session.close();
-                }
-    }
-    
-    public void deleteUser(Integer cid) {
+    public void updateCourse_Session(Course_Session cs) {
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
 	        session.beginTransaction();
-                Client c = (Client) session.get(Client.class, cid);
-	        session.delete(c);
-	        session.getTransaction().commit();
-		}
-		catch (HibernateException he) {
-	        he.printStackTrace();
-	        if(session.getTransaction() != null) {
-	            try {
-	                session.getTransaction().rollback();
-	            }catch(HibernateException he2) {he2.printStackTrace(); }
-	        }
-		}
-		finally {
-	         session.close();
-                }
-    }
-    public void updateUser(Client c) {
-	    Session session = HibernateUtil.getSessionFactory().openSession();
-	    try {
-	        session.beginTransaction();
-	        session.update(c);
+	        session.update(cs);
 	        session.getTransaction().commit();
 		}
 		catch (HibernateException he) {
@@ -99,35 +104,12 @@ public class HibernateClientDao {
                 }
     }
     
-    public void addSession(Course_Session cs, Integer cid) {
+    public void DeleteCourse_Session(Integer csid) {
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
 	        session.beginTransaction();
-                Client c = (Client) session.get(Client.class, cid);
-                c.setCourse_session(cs);
-	        session.save(c);
-	        session.getTransaction().commit();
-		}
-		catch (HibernateException he) {
-	        he.printStackTrace();
-	        if(session.getTransaction() != null) {
-	            try {
-	                session.getTransaction().rollback();
-	            }catch(HibernateException he2) {he2.printStackTrace(); }
-	        }
-		}
-		finally {
-	         session.close();
-                }
-    }
-    
-    public void deleteSession(Integer cid) {
-	    Session session = HibernateUtil.getSessionFactory().openSession();
-	    try {
-	        session.beginTransaction();
-                Client c = (Client) session.get(Client.class, cid);
-                c.setCourse_session(null);
-	        session.update(c);
+                Course_Session l = (Course_Session) session.get(Course_Session.class,csid);
+                session.delete(l);
 	        session.getTransaction().commit();
 		}
 		catch (HibernateException he) {

@@ -35,7 +35,7 @@ public class Client implements Serializable {
     private String address;
     private String phone;
     private String email;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "csid")
     private Course_Session course_session;
 

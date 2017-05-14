@@ -10,6 +10,8 @@ import com.mycompany.lo54.entity.Course;
 import com.mycompany.lo54.entity.Course_Session;
 import com.mycompany.lo54.entity.Location;
 import com.mycompany.lo54.repository.HibernateClientDao;
+import com.mycompany.lo54.repository.HibernateCourseDao;
+import com.mycompany.lo54.repository.HibernateCourse_SessionDao;
 import com.mycompany.lo54.repository.HibernateLocationDao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,16 +24,22 @@ import java.util.Date;
 public class App1 {
     public static void main (String[] args) throws ParseException{
         
-        HibernateClientDao h = new HibernateClientDao();
-        
+        HibernateClientDao hcd = new HibernateClientDao();
+        //HibernateLocationDao hld = new HibernateLocationDao();
+        //HibernateCourseDao hcod = new HibernateCourseDao();
+        HibernateCourse_SessionDao hcsd = new HibernateCourse_SessionDao();
         Client c = new Client();
+        Course_Session cs = hcsd.selectCourseById(1);
+        /*
         Location l = new Location ();
         Course co = new Course ();
-        Course_Session cs = new Course_Session ();
+        
         l.setLid(1);
         l.setCity("Shanghai");
+        //hld.addLocation(l);
         co.setCode("A001");
         co.setTitle("Math");
+        //hcod.addCourse(co);
         cs.setCsid(1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
         Date start_date = sdf.parse("2017-05-01"); 
@@ -40,13 +48,16 @@ public class App1 {
         cs.setEnd_date(end_date);
         cs.setCourse(co);
         cs.setLocation(l);
+        hcsd.addCourse_Session(cs);
+        */
         c.setCid(1);
         c.setFirstname("a");
         c.setLastname("bc");
         c.setAddress("anocanan123");
         c.setPhone("123456");
         c.setCourse_session(cs);
-        h.addUser(c);
+        
+        hcd.addUser(c);
 
         /*
         HibernateLocationDao h = new HibernateLocationDao();

@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 /**
@@ -47,5 +48,6 @@ public class Course implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+    
     
 }

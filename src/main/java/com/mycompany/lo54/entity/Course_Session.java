@@ -7,6 +7,7 @@ package com.mycompany.lo54.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,13 +33,15 @@ public class Course_Session implements Serializable{
     @GeneratedValue(generator = "generator")
     @Id
     private Integer csid; 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date start_date;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date end_date;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_code")
+    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=Course.class)
+    @JoinColumn(name="course_code")
     private Course course;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "location_id")
+    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=Location.class)
+    @JoinColumn(name="location_lid")
     private Location location;
 
     public Course_Session() {
@@ -52,7 +55,6 @@ public class Course_Session implements Serializable{
         this.csid = csid;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
     public Date getStart_date() {
         return start_date;
     }
@@ -61,7 +63,6 @@ public class Course_Session implements Serializable{
         this.start_date = start_date;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
     public Date getEnd_date() {
         return end_date;
     }
@@ -85,7 +86,7 @@ public class Course_Session implements Serializable{
     public void setLocation(Location location) {
         this.location = location;
     }
-    
-    
+
+  
 
 }

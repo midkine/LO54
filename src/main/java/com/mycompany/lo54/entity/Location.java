@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 /**
@@ -26,7 +27,7 @@ public class Location implements Serializable {
     @Id
     private Integer lid ;
     private String city ;
-
+    
     public Location() {
     }
 
@@ -45,7 +46,6 @@ public class Location implements Serializable {
     public String getCity() {
         return city;
     }
-    
     
     
 }

@@ -50,7 +50,7 @@ public class App1 {
         cs.setLocation(l);
         hcsd.addCourse_Session(cs);
         */
-        c.setCid(1);
+        c.setCid(2);
         c.setFirstname("a");
         c.setLastname("bc");
         c.setAddress("anocanan123");

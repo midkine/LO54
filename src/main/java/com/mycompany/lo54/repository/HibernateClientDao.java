@@ -98,7 +98,8 @@ public class HibernateClientDao {
 	         session.close();
                 }
     }
-    
+ 
+    /*
     public void addSession(Course_Session cs, Integer cid) {
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
@@ -120,7 +121,8 @@ public class HibernateClientDao {
 	         session.close();
                 }
     }
-    
+*/ 
+
     public void deleteSession(Integer cid) {
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {

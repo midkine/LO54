@@ -36,7 +36,6 @@ public class Client implements Serializable {
     private String phone;
     private String email;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "csid")
     private Course_Session course_session;
 
     public Client() {

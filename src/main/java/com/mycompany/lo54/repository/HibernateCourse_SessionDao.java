@@ -103,9 +103,10 @@ public class HibernateCourse_SessionDao {
         List<Object[]> list = null;
 	    try {
 	        session.beginTransaction();
-	        Query query = session.createQuery("from Course_Session cs, Course c, Location l where cs.location_id = l.lid "
-                        + "and cs.course_code = c.code and l.city = ?");
+	        Query query = session.createQuery("from Course_Session cs, Course c, Location l where cs.location.lid = l.lid "
+                        + "and cs.course.code = c.code and l.city = ?");
                 query.setString(0, location);
+                list=query.list();
                 session.getTransaction().commit();
                 return list;
 		}
@@ -129,9 +130,10 @@ public class HibernateCourse_SessionDao {
         List<Object[]> list = null;
 	    try {
 	        session.beginTransaction();
-	        Query query = session.createQuery("from Course_Session cs, Course c where cs.course_code = c.code "
-                        + "and c.title = ?");
+	        Query query = session.createQuery("from Course_Session cs, Course c "
+                        + " where c.code= cs.course.code and c.title = ?");
                 query.setString(0, title);
+                list=query.list();
                 session.getTransaction().commit();
                 return list;
 		}

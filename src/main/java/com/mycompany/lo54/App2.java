@@ -10,6 +10,7 @@ import com.mycompany.lo54.repository.HibernateCourse_SessionDao;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,14 +18,11 @@ import java.util.List;
  */
 public class App2 {
     public static void main (String[] args) throws ParseException{
-        Object[] obj = new Object[20];
-        List<Object[]> list = new ArrayList();
+        List<Map> list = new ArrayList();
         HibernateCourse_SessionDao hcsd = new HibernateCourse_SessionDao();
         list = hcsd.selectCourseByTitle("MATH");
-        for(int i=0; i<list.size();i++){
-            obj = list.get(i);           
-            Course_Session cs = (Course_Session) obj[0];
-            System.out.println(cs.getCsid());
+        for(Map map:list){           
+            System.out.println(map.get("sdate"));
         }
         //List<Object[]> list = hcsd.selectCourseByLocation("SHANGHAI");
     }

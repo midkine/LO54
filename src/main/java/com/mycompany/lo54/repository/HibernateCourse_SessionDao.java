@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -97,13 +98,15 @@ public class HibernateCourse_SessionDao {
     }
     
   
-    public List<Object[]> selectCourseByLocation(String location){
+    public List<Map> selectCourseByLocation(String location){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Course_Session course_session = null;
-        List<Object[]> list = null;
+        List<Map> list = null;
 	    try {
 	        session.beginTransaction();
-	        Query query = session.createQuery("from Course_Session cs, Course c, Location l where cs.location.lid = l.lid "
+	        Query query = session.createQuery("select new map(cs.csid as id, cs.start_date as sdate, cs.end_date as edate,"
+                        + " cs.course as course, cs.location as location)"
+                        + "from Course_Session cs, Course c, Location l where cs.location.lid = l.lid "
                         + "and cs.course.code = c.code and l.city = ?");
                 query.setString(0, location);
                 list=query.list();
@@ -124,13 +127,15 @@ public class HibernateCourse_SessionDao {
                 }
     }
     
-   public List<Object[]> selectCourseByTitle(String title){
+   public List<Map> selectCourseByTitle(String title){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Course_Session course_session = null;
-        List<Object[]> list = null;
+        List<Map> list = null;
 	    try {
 	        session.beginTransaction();
-	        Query query = session.createQuery("from Course_Session cs, Course c "
+	        Query query = session.createQuery("select new map(cs.csid as id,cs.start_date as sdate,cs.end_date as edate,"
+                        + "cs.course as course,cs.location as location)"
+                        + " from Course_Session cs, Course c"
                         + " where c.code= cs.course.code and c.title = ?");
                 query.setString(0, title);
                 list=query.list();

@@ -105,7 +105,7 @@ public class HibernateCourse_SessionDao {
 	    try {
 	        session.beginTransaction();
 	        Query query = session.createQuery("select new map(cs.csid as id, cs.start_date as sdate, cs.end_date as edate,"
-                        + " cs.course as course, cs.location as location)"
+                        + " c.title as course, l.city as location)"
                         + "from Course_Session cs, Course c, Location l where cs.location.lid = l.lid "
                         + "and cs.course.code = c.code and l.city = ?");
                 query.setString(0, location);

@@ -37,10 +37,10 @@ public class Course_Session implements Serializable{
     private Date start_date;
     @Temporal(TemporalType.TIMESTAMP)
     private Date end_date;
-    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=Course.class)
+    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,targetEntity=Course.class)
     @JoinColumn(name="course_code")
     private Course course;
-    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=Location.class)
+    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,targetEntity=Location.class)
     @JoinColumn(name="location_lid")
     private Location location;
 

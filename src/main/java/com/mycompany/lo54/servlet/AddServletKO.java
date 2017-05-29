@@ -32,8 +32,8 @@ public class AddServletKO extends HttpServlet {
             out.println("<title>Add Failure</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Add Failure</h1>\n");
-            //out.println("<a href='http://localhost:8080/LO54/'>Back to the list page</a><br/>");
+            out.println("<h1>Add Failure, please check your information</h1>\n");
+            out.println("<a href='http://localhost:8080/LO54/searchcsall'>Back to the list page</a><br/>");
             out.println("</body>");
             out.println("</html>");
          }

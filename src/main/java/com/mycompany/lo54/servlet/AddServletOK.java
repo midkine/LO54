@@ -31,7 +31,7 @@ public class AddServletOK extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Add Success</h1>\n");
-            //out.println("<a href='http://localhost:8080/LO54/'>Back to the list page</a><br/>");
+            out.println("<a href='http://localhost:8080/LO54/searchcsall'>Back to the list page</a><br/>");
             out.println("</body>");
             out.println("</html>");
          }

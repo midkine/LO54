@@ -12,6 +12,7 @@ import com.mycompany.lo54.repository.HibernateCourse_SessionDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -51,11 +52,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.println("<th>Course</th>");
             out.println("<th>Location</th>");
             out.println("</tr>");  
-            for(Map map:list){ 
+            for(Map map:list){
+            //Integer id = (Integer) map.get("id");
             out.println("<tr>");
-            out.println("<td>" +map.get("csid")+"</td>");
-            out.println("<td>" +map.get("sdate")+"</td>");
-            out.println("<td>" +map.get("edate")+"</td>");
+            out.println("<td><a href='http://localhost:8080/LO54/AddInfo.jsp?id=" +(Integer) map.get("id")+"'>"+(Integer) map.get("id")+"</a></td>");
+            out.println("<td>" +(Date) map.get("sdate")+"</td>");
+            out.println("<td>" +(Date) map.get("edate")+"</td>");
             out.println("<td>" +((Course)map.get("course")).getTitle()+"</td>");
             out.println("<td>" +((Location)map.get("location")).getCity()+"</td>");
             out.println("</tr>");

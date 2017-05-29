@@ -13,8 +13,8 @@
         <servlet-class>com.mycompany.lo54.servlet.AddServletKO</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchCSByIdServlet</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.SearchCSByIdServlet</servlet-class>
+        <servlet-name>SearchCSAllServlet</servlet-name>
+        <servlet-class>com.mycompany.lo54.servlet.SearchCSAllServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchCSByDateServlet</servlet-name>
@@ -41,8 +41,8 @@
         <url-pattern>/addko</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchCSByIdServlet</servlet-name>
-        <url-pattern>/searchcsbyid</url-pattern>
+        <servlet-name>SearchCSAllServlet</servlet-name>
+        <url-pattern>/searchcsall</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchCSByDateServlet</servlet-name>
@@ -54,8 +54,9 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchCSByLocationServlet</servlet-name>
-        <url-pattern>/searchCcsbylocation</url-pattern>
+        <url-pattern>/searchcsbylocation</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

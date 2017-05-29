@@ -37,8 +37,9 @@ public class AddServlet extends HttpServlet {
         String lastname = request.getParameter("lastname");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        HttpSession session=request.getSession();
-        Integer csid=Integer.parseInt((String) session.getAttribute("csid"));
+        Integer csid = Integer.parseInt(request.getParameter("csid"));
+        //HttpSession session=request.getSession();
+        //Integer csid=Integer.parseInt((String) session.getAttribute("csid"));
         try {
             /* TODO output your page here. You may use following sample code. */
             c.setCid(cid);
@@ -54,6 +55,7 @@ public class AddServlet extends HttpServlet {
         }
            catch(Exception e){
               RequestDispatcher dis=request.getRequestDispatcher("http://localhost:8080/LO54/addko"); 
+              dis.forward(request,response);
            }
    finally {
             out.close();

@@ -54,8 +54,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.println("<th>Location</th>");
             out.println("</tr>");  
             for(int i=0; i<list.size(); i++){ 
+            Integer id = cs.getCsid();
             out.println("<tr>");
-            out.println("<td>" +cs.getCsid()+"</td>");
+            out.println("<td><a href='http://localhost:8080/LO54/AddInfo.jsp?id=" +id+">"+id+"</a></td>");
             out.println("<td>" +cs.getStart_date()+"</td>");
             out.println("<td>" +cs.getEnd_date()+"</td>");
             out.println("<td>" +cs.getCourse().getTitle()+"</td>");

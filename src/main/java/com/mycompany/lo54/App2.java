@@ -19,11 +19,17 @@ import java.util.Map;
 public class App2 {
     public static void main (String[] args) throws ParseException{
         List<Map> list = new ArrayList();
+        //List<Course_Session> list = new ArrayList<Course_Session>();
         HibernateCourse_SessionDao hcsd = new HibernateCourse_SessionDao();
-        list = hcsd.selectCourseByTitle("MATH");
-        for(Map map:list){           
-            System.out.println(map.get("sdate"));
+        //list = hcsd.selectCourseByTitle("MATH");
+        //list = hcsd.selectAllSession();
+        list = hcsd.selectCourseByLocation("PARIS");
+        for(Map map:list){
+        //for(Course_Session cs:list)
+            //System.out.println(cs.getLocation().getCity());
+            System.out.println(map.get("course"));
         }
         //List<Object[]> list = hcsd.selectCourseByLocation("SHANGHAI");
     }
 }
+

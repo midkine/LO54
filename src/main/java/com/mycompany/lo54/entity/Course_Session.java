@@ -33,9 +33,9 @@ public class Course_Session implements Serializable{
     @GeneratedValue(generator = "generator")
     @Id
     private Integer csid; 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date start_date;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date end_date;
     @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,targetEntity=Course.class)
     @JoinColumn(name="course_code")

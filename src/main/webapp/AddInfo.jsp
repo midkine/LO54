@@ -14,7 +14,7 @@
     <body>
         <h1>Please add your personnal infomations!</h1>
         <% out.print("You have select Course_Session "+request.getParameter("id")); %>
-        <form action="http://localhost:8080/addservlet" methode="GET">
+        <form action="http://localhost:8080/LO54/addservlet" methode="GET">
             <input type="hidden" name="csid" value="<% out.print(request.getParameter("id")); %>"/>
             ID: <input type="text" name="cid"/></br>
             Lastname: <input type="text" name="lastname"/></br>

@@ -58,8 +58,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.println("<td><a href='http://localhost:8080/LO54/AddInfo.jsp?id=" +(Integer) map.get("id")+"'>"+(Integer) map.get("id")+"</a></td>");
             out.println("<td>" +(Date) map.get("sdate")+"</td>");
             out.println("<td>" +(Date) map.get("edate")+"</td>");
-            out.println("<td>" +((Course)map.get("course")).getTitle()+"</td>");
-            out.println("<td>" +((Location)map.get("location")).getCity()+"</td>");
+            out.println("<td>" +map.get("course")+"</td>");
+            out.println("<td>" +map.get("location")+"</td>");
             out.println("</tr>");
             }
             out.println("</table>");

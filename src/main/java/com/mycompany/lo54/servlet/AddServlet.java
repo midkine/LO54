@@ -50,12 +50,12 @@ public class AddServlet extends HttpServlet {
             cs = hcsd.selectCourseById(csid);
             c.setCourse_session(cs);
             hcd.addUser(c);
-            RequestDispatcher dis=request.getRequestDispatcher("http://localhost:8080/LO54/addok");
+            RequestDispatcher dis=request.getRequestDispatcher("/addok");
             dis.forward(request,response);
         }
            catch(Exception e){
-              RequestDispatcher dis=request.getRequestDispatcher("http://localhost:8080/LO54/addko"); 
-              dis.forward(request,response);
+              RequestDispatcher dis1=request.getRequestDispatcher("/addko"); 
+              dis1.forward(request,response);
            }
    finally {
             out.close();

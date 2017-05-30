@@ -62,14 +62,14 @@ public class SearchCSAllServlet extends HttpServlet {
             out.println("Title: <input type= 'text' name='title'/>");
             out.println("<input type ='submit' value='search'>");
             out.println("</form>");
-            out.println("<p>Search by date</p>");
+            out.println("<p>Search by date ( Format: yyyy-mm-dd )</p>");
             out.println("<form action='searchcsbydate' methode='GET'>");
-            out.println("Date: <input type= 'text' name='title'/>");
+            out.println("Date: <input type= 'text' name='date'/>");
             out.println("<input type ='submit' value='search'>");
             out.println("</form>");
             out.println("<p>Search by location</p>");
             out.println("<form action='searchcsbylocation' methode='GET'>");
-            out.println("Location: <input type= 'text' name='title'/>");
+            out.println("Location: <input type= 'text' name='location'/>");
             out.println("<input type ='submit' value='search'>");
             out.println("</form>");
             out.println("</body>");

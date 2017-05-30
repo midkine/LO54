@@ -31,13 +31,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HibernateCourse_SessionDao hcsd = new HibernateCourse_SessionDao();
-        Course_Session cs = new Course_Session();
         String date = request.getParameter("date");
         List<Course_Session> list = new ArrayList<Course_Session>();
-   
+        try {
+        list = hcsd.selectCourseByDate(date);
+        } catch (ParseException ex) {
+        Logger.getLogger(SearchCSByDateServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             /* TODO output your page here. You may use following sample code. */
-            list = hcsd.selectCourseByDate(date);
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -53,10 +56,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.println("<th>Course</th>");
             out.println("<th>Location</th>");
             out.println("</tr>");  
-            for(int i=0; i<list.size(); i++){ 
-            Integer id = cs.getCsid();
+            for(Course_Session cs:list){ 
             out.println("<tr>");
-            out.println("<td><a href='http://localhost:8080/LO54/AddInfo.jsp?id=" +id+">"+id+"</a></td>");
+            out.println("<td><a href='http://localhost:8080/LO54/AddInfo.jsp?id=" +cs.getCsid()+"'>"+cs.getCsid()+"</a></td>");
             out.println("<td>" +cs.getStart_date()+"</td>");
             out.println("<td>" +cs.getEnd_date()+"</td>");
             out.println("<td>" +cs.getCourse().getTitle()+"</td>");
@@ -67,9 +69,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.println("</body>");
             out.println("</html>");
          }
-         catch (ParseException ex) {
-        Logger.getLogger(SearchCSByDateServlet.class.getName()).log(Level.SEVERE, null, ex);
-    }
           finally {
             out.close();
         }

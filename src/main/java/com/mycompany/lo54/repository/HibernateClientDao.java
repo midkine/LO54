@@ -8,7 +8,10 @@ package com.mycompany.lo54.repository;
 import com.mycompany.lo54.entity.Client;
 import com.mycompany.lo54.entity.Course_Session;
 import com.mycompany.lo54.util.HibernateUtil;
+import java.util.List;
+import java.util.Map;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -99,15 +102,19 @@ public class HibernateClientDao {
                 }
     }
  
-    /*
-    public void addSession(Course_Session cs, Integer cid) {
+    //生成PDF用
+    public List<Map> SelectClients() {
 	    Session session = HibernateUtil.getSessionFactory().openSession();
+            List<Map> list = null;
 	    try {
 	        session.beginTransaction();
-                Client c = (Client) session.get(Client.class, cid);
-                c.setCourse_session(cs);
-	        session.save(c);
+                Query query = session.createQuery("select new map(cs.csid as id, cs.start_date as sdate, cs.end_date as edate,"
+                        + "c.title as course, l.city as location, cl.lastname as lname, cl.firstname as fname"
+                        + "from Course_Session cs, Course c, Location l, Client cl where cs.location.lid = l.lid "
+                        + "and cs.course.code = c.code and cl.course_session_csid = cs.csid");
+                list=query.list();
 	        session.getTransaction().commit();
+                return list;
 		}
 		catch (HibernateException he) {
 	        he.printStackTrace();
@@ -116,32 +123,13 @@ public class HibernateClientDao {
 	                session.getTransaction().rollback();
 	            }catch(HibernateException he2) {he2.printStackTrace(); }
 	        }
+                return list;
 		}
 		finally {
 	         session.close();
                 }
     }
-*/ 
 
-    public void deleteSession(Integer cid) {
-	    Session session = HibernateUtil.getSessionFactory().openSession();
-	    try {
-	        session.beginTransaction();
-                Client c = (Client) session.get(Client.class, cid);
-                c.setCourse_session(null);
-	        session.update(c);
-	        session.getTransaction().commit();
-		}
-		catch (HibernateException he) {
-	        he.printStackTrace();
-	        if(session.getTransaction() != null) {
-	            try {
-	                session.getTransaction().rollback();
-	            }catch(HibernateException he2) {he2.printStackTrace(); }
-	        }
-		}
-		finally {
-	         session.close();
-                }
-    }
+
+   
 }

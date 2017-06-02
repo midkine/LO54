@@ -70,7 +70,6 @@ public class HibernateCourse_SessionDao {
     
     public List<Course_Session> selectCourseByDate(String s) throws ParseException{
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Course_Session course_session = null;
         Date date = null;
         List<Course_Session> list = null;
 	    try {
@@ -100,7 +99,6 @@ public class HibernateCourse_SessionDao {
   
     public List<Map> selectCourseByLocation(String location){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Course_Session course_session = null;
         List<Map> list = null;
 	    try {
 	        session.beginTransaction();
@@ -129,7 +127,6 @@ public class HibernateCourse_SessionDao {
     
    public List<Map> selectCourseByTitle(String title){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Course_Session course_session = null;
         List<Map> list = null;
 	    try {
 	        session.beginTransaction();

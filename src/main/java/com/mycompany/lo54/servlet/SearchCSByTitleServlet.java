@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Paul-Huang
  */
+@WebServlet(name = "SearchCSByTitleServlet", urlPatterns = "/searchcsbytitle")
 public class SearchCSByTitleServlet extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,10 +39,14 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
         Course_Session cs = new Course_Session();
         String title = request.getParameter("title");
         List<Map> list = new ArrayList<Map>();
-        list = hcsd.selectCourseByTitle(title);
-        try {
+        list = hcsd.selectCourseByTitle(title);    
             /* TODO output your page here. You may use following sample code. */
-            
+            if(list.size()==0){
+                RequestDispatcher dis1=request.getRequestDispatcher("/noresult.jsp"); 
+                dis1.forward(request,response);
+            }
+            else{
+            try {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -66,6 +73,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.println("</tr>");
             }
             out.println("</table>");
+            out.println("<a href='http://localhost:8080/LO54/searchcsall'>Back</a>");
             out.println("</body>");
             out.println("</html>");
          }
@@ -73,4 +81,5 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             out.close();
         }
    }
+}
 }

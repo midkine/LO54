@@ -16,12 +16,17 @@
         <% out.print("You have select Course_Session "+request.getParameter("id")); %>
         <form action="http://localhost:8080/LO54/addservlet" methode="GET">
             <input type="hidden" name="csid" value="<% out.print(request.getParameter("id")); %>"/>
-            ID: <input type="text" name="cid"/></br>
-            Lastname: <input type="text" name="lastname"/></br>
-            Firstname: <input type="text" name="firstname"/></br>
-            Address: <input type="text" name="address"/></br>
-            Phone: <input type="text" name="phone"/></br>
+            ID *: <input type="text" name="cid"/></br>
+            Lastname *: <input type="text" name="lastname"/></br>
+            Firstname *: <input type="text" name="firstname"/></br>
+            Address *: <input type="text" name="address"/></br>
+            Phone *: <input type="text" name="phone"/></br>
+            Email: <input type="text" name="email"/></br>
             <input type="submit" value="submit"/>
         </form>
+           <p> * : colones obligatory</p>
+           <p><a href="http://localhost:8080/LO54/searchcsall">Back to list</a><br/>
+           <a href="http://localhost:8080/LO54/Home.jsp">Back to HomePage</a>
+           </p>
     </body>
 </html>

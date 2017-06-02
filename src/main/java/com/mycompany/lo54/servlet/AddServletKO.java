@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Paul-Huang
  */
-@WebServlet(name = "AddServletKO", urlPatterns = {"/addko"})
+@WebServlet(name = "AddServletKO", urlPatterns = "/addko")
 public class AddServletKO extends HttpServlet {
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response)

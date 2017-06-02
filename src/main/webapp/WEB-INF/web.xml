@@ -1,65 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>AddServlet</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.AddServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddServletOK</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.AddServletOK</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddServletKO</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.AddServletKO</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchCSAllServlet</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.SearchCSAllServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchCSByDateServlet</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.SearchCSByDateServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchCSByTitleServlet</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.SearchCSByTitleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchCSByLocationServlet</servlet-name>
-        <servlet-class>com.mycompany.lo54.servlet.SearchCSByLocationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddServlet</servlet-name>
-        <url-pattern>/addservlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddServletOK</servlet-name>
-        <url-pattern>/addok</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddServletKO</servlet-name>
-        <url-pattern>/addko</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchCSAllServlet</servlet-name>
-        <url-pattern>/searchcsall</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchCSByDateServlet</servlet-name>
-        <url-pattern>/searchcsbydate</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchCSByTitleServlet</servlet-name>
-        <url-pattern>/searchcsbytitle</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchCSByLocationServlet</servlet-name>
-        <url-pattern>/searchcsbylocation</url-pattern>
-    </servlet-mapping>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
+    <welcome-file-list>
+        <welcome-file>
+            /Home.jsp
+        </welcome-file>
+    </welcome-file-list>
 </web-app>
